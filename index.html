@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>TypeFlow — Typing practice</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="TypeFlow home" id="brandHome"><span class="brand-mark">t</span> TypeFlow</a>
+    <div class="top-actions">
+      <span class="keyboard-mode-label">BEIGE · LIGHT MODE</span>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="Switch color theme" title="Switch theme">◐</button>
+    </div>
+  </header>
+
+  <main id="appMain">
+    <section id="levelScreen" class="screen level-screen" aria-labelledby="levelHeading">
+      <div class="eyebrow">A LITTLE PRACTICE GOES A LONG WAY</div>
+      <h1 id="levelHeading">How fast do you type?</h1>
+      <p class="intro">Choose your pace. Focus on accuracy, and let speed follow.</p>
+      <div class="level-grid" id="levelGrid">
+        <button class="level-card" data-level="beginner" type="button"><span class="level-number">01</span><span class="level-name">Beginner</span><span class="level-range">Under 20 WPM</span><span class="level-arrow">↗</span></button>
+        <button class="level-card" data-level="intermediate" type="button"><span class="level-number">02</span><span class="level-name">Intermediate</span><span class="level-range">20 to 40 WPM</span><span class="level-arrow">↗</span></button>
+        <button class="level-card" data-level="advanced" type="button"><span class="level-number">03</span><span class="level-name">Advanced</span><span class="level-range">40 to 60 WPM</span><span class="level-arrow">↗</span></button>
+        <button class="level-card" data-level="expert" type="button"><span class="level-number">04</span><span class="level-name">Expert</span><span class="level-range">60+ WPM</span><span class="level-arrow">↗</span></button>
+      </div>
+      <p class="keyboard-note"><span class="tiny-dot"></span> Physical keyboard required · Press <kbd>1</kbd>–<kbd>4</kbd> to choose</p>
+    </section>
+
+    <section id="typingScreen" class="screen typing-screen" aria-labelledby="roundHeading" hidden>
+      <div class="round-header">
+        <button id="backButton" class="text-button" type="button">← Levels</button>
+        <div class="round-label"><span class="live-dot"></span><span id="roundLevel">Beginner</span> round</div>
+        <button id="restartButton" class="text-button" type="button">Restart ↻</button>
+      </div>
+      <div class="stats-row" aria-live="polite">
+        <div class="timer-stat"><span class="stat-label">TIME LEFT</span><strong id="timerValue">60<span>s</span></strong></div>
+        <div class="stat"><span class="stat-label">WPM</span><strong id="wpmValue">0</strong></div>
+        <div class="stat"><span class="stat-label">ACCURACY</span><strong id="accuracyValue">100<span>%</span></strong></div>
+      </div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <div class="typing-area" id="typingArea" tabindex="0" aria-label="Typing practice area. Type the displayed text on your physical keyboard.">
+        <div class="typing-prompt"><span class="prompt-dot"></span> TYPE THE TEXT BELOW</div>
+        <h1 id="roundHeading" class="sr-only">Typing round</h1>
+        <div id="sentenceList" class="sentence-list" aria-live="off"></div>
+        <p id="roundMessage" class="round-message">Start typing to begin the timer.</p>
+      </div>
+      <p class="round-shortcuts"><kbd>Esc</kbd> restart round <span>·</span> Backspace corrects mistakes <span>·</span> Type each line exactly</p>
+    </section>
+
+    <section id="resultsScreen" class="screen results-screen" aria-labelledby="resultsHeading" hidden>
+      <div class="eyebrow">ROUND COMPLETE</div>
+      <h1 id="resultsHeading">Nice work.</h1>
+      <p id="resultSubheading" class="intro">Every round makes the next one easier.</p>
+      <div class="result-hero"><span class="stat-label">YOUR NET SPEED</span><div class="result-wpm"><span id="finalWpm">0</span><small>WPM</small></div><div id="newBestLabel" class="new-best" hidden>✦ New best!</div></div>
+      <div class="result-grid">
+        <div class="result-cell"><span>Accuracy</span><strong id="finalAccuracy">100%</strong></div>
+        <div class="result-cell"><span>Total errors</span><strong id="finalErrors">0</strong></div>
+        <div class="result-cell"><span>Time used</span><strong id="finalTime">0s</strong></div>
+        <div class="result-cell"><span>Lines completed</span><strong id="finalLines">0 / 4</strong></div>
+        <div class="result-cell best-cell"><span>Best for <b id="bestLevelName">Beginner</b></span><strong id="bestWpm">0 WPM</strong></div>
+      </div>
+      <div class="result-actions"><button id="tryAgainButton" class="primary-button" type="button">Try again <span>↻</span></button><button id="changeLevelButton" class="secondary-button" type="button">Change level</button></div>
+    </section>
+  </main>
+
+  <aside id="keyboardDock" class="keyboard-dock" aria-label="On-screen keyboard" hidden>
+    <div class="keyboard-wrap"><div id="keyboard" class="keyboard" role="img" aria-label="Animated beige and orange 60 percent keyboard"></div></div>
+    <div class="keyboard-caption"><span><i class="caption-key"></i> Live keyboard</span><span>60% · ANSI layout</span></div>
+  </aside>
+  <div id="phoneNotice" class="phone-notice" hidden><div class="phone-icon">⌨</div><h2>TypeFlow needs a physical keyboard</h2><p>Open this page on a laptop or desktop with a keyboard to start a round.</p></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
